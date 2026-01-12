@@ -2,12 +2,18 @@
 const SERVER_URL = window.location.origin;
 
 // WebRTC configuration
+// WebRTC configuration - More robust list
 const rtcConfig = {
     iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
-        { urls: 'stun:stun1.l.google.com:19302' }
+        { urls: 'stun:stun1.l.google.com:19302' },
+        { urls: 'stun:stun2.l.google.com:19302' },
+        { urls: 'stun:stun3.l.google.com:19302' },
+        { urls: 'stun:stun4.l.google.com:19302' },
     ]
 };
+
+console.log('App Version: v4.0 - With Audio Fixes & Logging');
 
 // State
 let socket = null;
@@ -403,6 +409,9 @@ function joinChat() {
         chatScreen.classList.add('active');
         logoutBtn.classList.add('visible');
         callControls.classList.add('visible');
+
+        // Version check message
+        addMessage('', 'WebRTC Chat v4.0 - מוכן לשיחה (חיבור משופר)', true);
     });
 
     socket.on('disconnect', () => {
