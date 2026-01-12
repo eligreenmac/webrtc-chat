@@ -154,32 +154,6 @@
             box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
         }
 
-        /* Logout Button */
-        .logout-btn {
-            display: none;
-            padding: 0.5rem 1rem;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: var(--radius-full);
-            color: var(--error);
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .logout-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            transform: translateY(-1px);
-        }
-
-        .logout-btn.visible {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
         .main-content {
             flex: 1;
             background: var(--bg-glass);
@@ -396,6 +370,155 @@
             color: var(--primary-light);
         }
 
+        .input-area {
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .input-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        #messageInput:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .send-btn {
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            flex-shrink: 0;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .send-btn svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+
+            .logo h1 {
+                font-size: 1.25rem;
+            }
+
+            .header {
+                padding: 1rem;
+            }
+
+            .messages-container {
+                padding: 1rem;
+            }
+
+            .input-area {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.25rem;
+                gap: 0.25rem;
+            }
+
+            .header {
+                padding: 0.75rem;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .status-indicator {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.75rem;
+            }
+
+            .messages-container {
+                padding: 0.75rem;
+            }
+
+            .input-area {
+                padding: 0.75rem;
+            }
+
+            .message-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            display: none;
+            padding: 0.5rem 1rem;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--error);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .logout-btn.visible {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         /* Call Controls Bar */
         .call-controls {
             display: none;
@@ -579,129 +702,6 @@
         .modal-overlay.visible {
             display: block;
         }
-
-        .input-area {
-            padding: 1.5rem;
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .input-container {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        #messageInput {
-            flex: 1;
-            padding: 0.75rem 1.25rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-full);
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        #messageInput:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-        }
-
-        .send-btn {
-            width: 48px;
-            height: 48px;
-            border: none;
-            background: var(--gradient-primary);
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-            flex-shrink: 0;
-        }
-
-        .send-btn:hover:not(:disabled) {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .send-btn svg {
-            width: 24px;
-            height: 24px;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 0.5rem;
-                gap: 0.5rem;
-            }
-
-            .logo h1 {
-                font-size: 1.25rem;
-            }
-
-            .header {
-                padding: 1rem;
-            }
-
-            .messages-container {
-                padding: 1rem;
-            }
-
-            .input-area {
-                padding: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0.25rem;
-                gap: 0.25rem;
-            }
-
-            .header {
-                padding: 0.75rem;
-            }
-
-            .logo h1 {
-                font-size: 1.1rem;
-            }
-
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-            }
-
-            .status-indicator {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.75rem;
-            }
-
-            .messages-container {
-                padding: 0.75rem;
-            }
-
-            .input-area {
-                padding: 0.75rem;
-            }
-
-            .message-avatar {
-                width: 32px;
-                height: 32px;
-                font-size: 0.75rem;
-            }
-        }
     </style>
 </head>
 
@@ -758,10 +758,16 @@
 
                 <!-- Call Controls -->
                 <div class="call-controls" id="callControls">
-                    <button class="call-btn mic" id="micBtn" title="מיקרופון">🎤</button>
+                    <button class="call-btn mic" id="micBtn" title="מיקרופון">
+                        🎤
+                    </button>
                     <div class="call-status" id="callStatus">מוכן לשיחה</div>
-                    <button class="call-btn call" id="callBtn" title="התקשר">📞</button>
-                    <button class="call-btn hangup" id="hangupBtn" style="display: none;" title="נתק">📵</button>
+                    <button class="call-btn call" id="callBtn" title="התקשר">
+                        📞
+                    </button>
+                    <button class="call-btn hangup" id="hangupBtn" style="display: none;" title="נתק">
+                        📵
+                    </button>
                 </div>
 
                 <div class="input-area">
@@ -795,7 +801,352 @@
     </div>
 
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-    <script src="app.js"></script>
+    <script>
+        // Configuration - UPDATE THIS WITH YOUR SERVER URL
+        const SERVER_URL = window.location.origin; // Use same origin as the page
+
+        // WebRTC configuration
+        const rtcConfig = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:stun1.l.google.com:19302' }
+            ]
+        };
+
+        // State
+        let socket = null;
+        let myUsername = '';
+        let myId = '';
+        let peers = new Map(); // peerId -> { username, connection, dataChannel, audioElement }
+
+        // Voice call state
+        let localStream = null;
+        let callState = 'idle'; // 'idle', 'calling', 'ringing', 'in-call'
+        let isMuted = false;
+        let callStartTime = null;
+        let callTimer = null;
+        let incomingCallFrom = null;
+
+        // DOM Elements
+        const joinScreen = document.getElementById('joinScreen');
+        const chatScreen = document.getElementById('chatScreen');
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+        const usernameInput = document.getElementById('usernameInput');
+        const joinBtn = document.getElementById('joinBtn');
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const messagesContainer = document.getElementById('messagesContainer');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const callControls = document.getElementById('callControls');
+        const callBtn = document.getElementById('callBtn');
+        const hangupBtn = document.getElementById('hangupBtn');
+        const micBtn = document.getElementById('micBtn');
+        const callStatus = document.getElementById('callStatus');
+        const incomingCall = document.getElementById('incomingCall');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const acceptCallBtn = document.getElementById('acceptCallBtn');
+        const rejectCallBtn = document.getElementById('rejectCallBtn');
+        const callUsername = document.getElementById('callUsername');
+        const callAvatar = document.getElementById('callAvatar');
+
+        // Utility Functions
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        function addMessage(username, message, isSystem = false) {
+            const messageEl = document.createElement('div');
+
+            if (isSystem) {
+                messageEl.className = 'system-message';
+                messageEl.textContent = message;
+            } else {
+                messageEl.className = 'message';
+                const initial = username.charAt(0).toUpperCase();
+                const time = new Date().toLocaleTimeString('he-IL', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                messageEl.innerHTML = `
+                    <div class="message-avatar">${initial}</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-username">${escapeHtml(username)}</span>
+                            <span class="message-time">${time}</span>
+                        </div>
+                        <div class="message-text">${escapeHtml(message)}</div>
+                    </div>
+                `;
+            }
+
+            messagesContainer.appendChild(messageEl);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function updateStatus(connected) {
+            if (connected) {
+                statusDot.classList.add('connected');
+                statusText.textContent = 'מחובר';
+            } else {
+                statusDot.classList.remove('connected');
+                statusText.textContent = 'מנותק';
+            }
+        }
+
+        // Join Chat
+        function joinChat() {
+            const username = usernameInput.value.trim();
+            if (!username) {
+                usernameInput.focus();
+                return;
+            }
+
+            myUsername = username;
+
+            // Connect to signaling server
+            socket = io(SERVER_URL);
+
+            socket.on('connect', () => {
+                console.log('Connected to signaling server');
+                myId = socket.id;
+                updateStatus(true);
+
+                // Register username
+                socket.emit('register', { username: myUsername });
+
+                // Switch to chat screen
+                joinScreen.style.display = 'none';
+                chatScreen.classList.add('active');
+            });
+
+            socket.on('disconnect', () => {
+                console.log('Disconnected from signaling server');
+                updateStatus(false);
+                addMessage('', 'נותקת משרת הסיגנלינג', true);
+            });
+
+            socket.on('peers-list', (peerList) => {
+                console.log('Received peers list:', peerList);
+                // Connect to each existing peer
+                peerList.forEach(peer => {
+                    createPeerConnection(peer.id, peer.username, true);
+                });
+            });
+
+            socket.on('peer-joined', (peer) => {
+                console.log('Peer joined:', peer);
+                addMessage('', `${peer.username} הצטרף לצ'אט`, true);
+                // Don't initiate connection - wait for the new peer to connect to us
+            });
+
+            socket.on('peer-left', (peer) => {
+                console.log('Peer left:', peer);
+                addMessage('', `${peer.username} עזב את הצ'אט`, true);
+                closePeerConnection(peer.id);
+            });
+
+            socket.on('offer', async ({ fromId, fromPeer, offer }) => {
+                console.log('Received offer from:', fromPeer);
+                await handleOffer(fromId, fromPeer, offer);
+            });
+
+            socket.on('answer', async ({ fromId, fromPeer, answer }) => {
+                console.log('Received answer from:', fromPeer);
+                await handleAnswer(fromId, answer);
+            });
+
+            socket.on('ice-candidate', async ({ fromId, candidate }) => {
+                await handleIceCandidate(fromId, candidate);
+            });
+        }
+
+        // WebRTC Functions
+        async function createPeerConnection(peerId, peerUsername, initiator = false) {
+            if (peers.has(peerId)) {
+                console.log('Already connected to:', peerUsername);
+                return;
+            }
+
+            console.log('Creating peer connection with:', peerUsername, 'Initiator:', initiator);
+
+            const pc = new RTCPeerConnection(rtcConfig);
+            const peerData = { username: peerUsername, connection: pc, dataChannel: null };
+            peers.set(peerId, peerData);
+
+            // Handle ICE candidates
+            pc.onicecandidate = (event) => {
+                if (event.candidate) {
+                    socket.emit('ice-candidate', {
+                        targetId: peerId,
+                        candidate: event.candidate
+                    });
+                }
+            };
+
+            pc.onconnectionstatechange = () => {
+                console.log('Connection state:', pc.connectionState);
+                if (pc.connectionState === 'disconnected' || pc.connectionState === 'failed') {
+                    closePeerConnection(peerId);
+                }
+            };
+
+            if (initiator) {
+                // Create data channel
+                const dataChannel = pc.createDataChannel('chat');
+                setupDataChannel(peerId, dataChannel);
+                peerData.dataChannel = dataChannel;
+
+                // Create and send offer
+                const offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+
+                socket.emit('offer', {
+                    targetId: peerId,
+                    offer: offer
+                });
+            } else {
+                // Wait for data channel
+                pc.ondatachannel = (event) => {
+                    setupDataChannel(peerId, event.channel);
+                    peerData.dataChannel = event.channel;
+                };
+            }
+        }
+
+        async function handleOffer(peerId, peerInfo, offer) {
+            await createPeerConnection(peerId, peerInfo.username, false);
+
+            const peerData = peers.get(peerId);
+            const pc = peerData.connection;
+
+            await pc.setRemoteDescription(new RTCSessionDescription(offer));
+
+            const answer = await pc.createAnswer();
+            await pc.setLocalDescription(answer);
+
+            socket.emit('answer', {
+                targetId: peerId,
+                answer: answer
+            });
+        }
+
+        async function handleAnswer(peerId, answer) {
+            const peerData = peers.get(peerId);
+            if (peerData) {
+                await peerData.connection.setRemoteDescription(new RTCSessionDescription(answer));
+            }
+        }
+
+        async function handleIceCandidate(peerId, candidate) {
+            const peerData = peers.get(peerId);
+            if (peerData) {
+                try {
+                    await peerData.connection.addIceCandidate(new RTCIceCandidate(candidate));
+                } catch (error) {
+                    console.error('Error adding ICE candidate:', error);
+                }
+            }
+        }
+
+        function setupDataChannel(peerId, dataChannel) {
+            const peerData = peers.get(peerId);
+
+            dataChannel.onopen = () => {
+                console.log('Data channel opened with:', peerData.username);
+                addMessage('', `התחבר ל-${peerData.username}`, true);
+                sendBtn.disabled = false;
+            };
+
+            dataChannel.onclose = () => {
+                console.log('Data channel closed with:', peerData.username);
+            };
+
+            dataChannel.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                addMessage(data.username, data.message);
+            };
+
+            dataChannel.onerror = (error) => {
+                console.error('Data channel error:', error);
+            };
+        }
+
+        function closePeerConnection(peerId) {
+            const peerData = peers.get(peerId);
+            if (peerData) {
+                if (peerData.dataChannel) {
+                    peerData.dataChannel.close();
+                }
+                peerData.connection.close();
+                peers.delete(peerId);
+
+                // Disable send button if no peers
+                if (peers.size === 0) {
+                    sendBtn.disabled = true;
+                }
+            }
+        }
+
+        // Send Message
+        function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message) return;
+
+            // Add to local UI
+            addMessage(myUsername, message);
+
+            // Send to all peers via WebRTC
+            const data = JSON.stringify({
+                username: myUsername,
+                message: message
+            });
+
+            peers.forEach((peerData, peerId) => {
+                if (peerData.dataChannel && peerData.dataChannel.readyState === 'open') {
+                    peerData.dataChannel.send(data);
+                }
+            });
+
+            messageInput.value = '';
+            messageInput.focus();
+        }
+
+        // Event Listeners
+        joinBtn.addEventListener('click', joinChat);
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') joinChat();
+        });
+
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        // Focus input
+        usernameInput.focus();
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch((err) => {
+                        console.log('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

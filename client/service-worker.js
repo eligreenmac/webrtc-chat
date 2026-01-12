@@ -1,7 +1,8 @@
-const CACHE_NAME = 'webrtc-chat-v1';
+const CACHE_NAME = 'webrtc-chat-v2';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/app.js',
     '/manifest.json',
     '/icons/icon-192.png',
     '/icons/icon-512.png',
