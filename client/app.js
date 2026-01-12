@@ -484,13 +484,30 @@ async function createPeerConnection(peerId, peerUsername, initiator = false) {
             if (!peerData.audioElement) {
                 peerData.audioElement = new Audio();
                 peerData.audioElement.autoplay = true;
+                peerData.audioElement.playsInline = true; // For iOS
+                peerData.audioElement.controls = false;
+                peerData.audioElement.volume = 1.0;
+                document.body.appendChild(peerData.audioElement); // Add to DOM is sometimes needed for mobile
             }
             peerData.audioElement.srcObject = event.streams[0];
 
             // Try to play (handle autoplay policy)
-            peerData.audioElement.play().catch(err => {
-                console.log('Autoplay prevented, user interaction needed');
-            });
+            const playPromise = peerData.audioElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.error('Auto-play was prevented:', error);
+                    addMessage('', '⚠️ לחץ על המסך כדי לשמוע את השיחה', true);
+
+                    // Add one-time click listener to play audio
+                    const enableAudio = () => {
+                        peerData.audioElement.play();
+                        document.removeEventListener('click', enableAudio);
+                        document.removeEventListener('touchstart', enableAudio);
+                    };
+                    document.addEventListener('click', enableAudio);
+                    document.addEventListener('touchstart', enableAudio);
+                });
+            }
         }
     };
 
