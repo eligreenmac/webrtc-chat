@@ -468,8 +468,15 @@ async function createPeerConnection(peerId, peerUsername, initiator = false) {
         }
     };
 
+    pc.oniceconnectionstatechange = () => {
+        console.log('ICE Connection State:', pc.iceConnectionState);
+        addMessage('', `ICE State: ${pc.iceConnectionState}`, true); // Debug output
+    };
+
     pc.onconnectionstatechange = () => {
         console.log('Connection state:', pc.connectionState);
+        addMessage('', `Connection State: ${pc.connectionState}`, true); // Debug output
+
         if (pc.connectionState === 'disconnected' || pc.connectionState === 'failed') {
             closePeerConnection(peerId);
         }
@@ -477,7 +484,9 @@ async function createPeerConnection(peerId, peerUsername, initiator = false) {
 
     // Handle incoming audio tracks
     pc.ontrack = (event) => {
-        console.log('Received remote track:', event.track.kind);
+        console.log('Received remote track:', event.track.kind, event.track.id);
+        addMessage('', `Received Track: ${event.track.kind}`, true); // Debug output
+
 
         if (event.track.kind === 'audio') {
             // Create audio element for remote audio
