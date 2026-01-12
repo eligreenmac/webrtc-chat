@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="WebRTC P2P Chat - תקשורת ישירה בין מכשירים">
+    <link rel="manifest" href="manifest.json">
     <title>WebRTC Chat - תומך iOS ו-Android</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,13 +59,15 @@
             background: var(--gradient-bg);
             color: var(--text-primary);
             min-height: 100vh;
-            overflow: hidden;
+            min-height: 100dvh;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            height: 100vh;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             max-width: 800px;
@@ -429,6 +434,7 @@
         @media (max-width: 768px) {
             .container {
                 padding: 0.5rem;
+                gap: 0.5rem;
             }
 
             .logo h1 {
@@ -445,6 +451,45 @@
 
             .input-area {
                 padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.25rem;
+                gap: 0.25rem;
+            }
+
+            .header {
+                padding: 0.75rem;
+            }
+
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .status-indicator {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.75rem;
+            }
+
+            .messages-container {
+                padding: 0.75rem;
+            }
+
+            .input-area {
+                padding: 0.75rem;
+            }
+
+            .message-avatar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.75rem;
             }
         }
     </style>
@@ -824,6 +869,19 @@
 
         // Focus input
         usernameInput.focus();
+
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('ServiceWorker registration successful:', registration.scope);
+                    })
+                    .catch((err) => {
+                        console.log('ServiceWorker registration failed:', err);
+                    });
+            });
+        }
     </script>
 </body>
 
