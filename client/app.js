@@ -137,7 +137,7 @@ function logout() {
 
     // Update status
     updateStatus(false);
-    statusText.textContent = 'התנתקת מהצ'אט';
+    statusText.textContent = 'התנתקת מהצ\'אט';
 
     // Clear username input for new login
     usernameInput.value = '';
